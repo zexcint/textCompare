@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text Compare</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="data:,">
+    <script type="module" src="main.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <h1>Text Compare!</h1>
+      </div>
+      <div class="textsTocompare">
+        <div contenteditable="" class="text1"></div>
+        <div contenteditable="" class="text2"></div>
+      </div>
+      <div class="elements">
+        <div class="showResult">
+          <div class="not">
+            <textarea class="notEqual_1" disabled rows="8"></textarea>
+            <textarea class="notEqual_2" disabled rows="8"></textarea>
+          </div>
+          <div class="equal">The two texts are identical!</div>
+          <button class="compareBtn">Compare&#33;</button>
+        </div>
+        <div class="setConfig">
+          <label>Lowercase<input class="textLowerCase" type="checkbox" value="lower"></label>
+          <label>Delete empty spaces<input class="noSpaces" type="checkbox" value="empity"></label>
+        </div>
+        <div class="clear">
+          <button class="clearBtn">Clear All</button>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,207 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+:root {
+  color-scheme: light dark;
+}
+
+* {
+  font-weight: bold;
+}
+
+.container {
+  display: grid;
+  grid-template-areas:
+    "header header header"
+    "elements elements elements"
+    "main main main";
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: auto auto 1fr;
+  gap: 1rem;
+  min-height: 100dvh;
+  min-width: 100dvw;
+
+  .header {
+    background: #438552;
+    grid-area: header;
+    padding: 1rem;
+
+    h1 {
+      text-align: center;
+    }
+  }
+
+  .textsTocompare {
+    grid-area: main;
+    display: flex;
+    flex-flow: row wrap;
+    gap: 1rem;
+    padding: 1rem;
+    justify-content: center;
+
+    .text1,
+    .text2 {
+      flex-grow: 1;
+      background: #222;
+      color: #fff;
+      outline: none;
+      max-width: 40%;
+      min-height: 200px;
+      overflow: auto;
+      word-wrap: break-word;
+    }
+
+    .text1 {
+      margin-left: 5%;
+    }
+
+    .text2 {
+      margin-right: 5%;
+    }
+
+    .text1:focus,
+    .text2:focus {
+      background: #303136;
+    }
+
+    .text1::before {
+      content: "Paste one version of a text here."
+    }
+
+    .text2::before {
+      content: "Paste another version of the text here."
+    }
+
+    .text1:not(:empty)::before,
+    .text2:not(:empty)::before {
+      content: "";
+    }
+  }
+
+  .elements {
+    grid-area: elements;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    gap: 1rem;
+
+    .showResult {
+      display: grid;
+      grid-template-areas:
+        "equal equal equal"
+        "not not not"
+        ". button .";
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: 50px auto 50px;
+      order: 2;
+      gap: 1rem;
+      width: 50%;
+
+      .not {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        grid-area: not;
+
+        .notEqual_1,
+        .notEqual_2 {
+          visibility: hidden;
+          resize: none;
+          border: none;
+          flex-grow: 1;
+        }
+      }
+
+      .equal {
+        grid-area: equal;
+        justify-self: center;
+        padding: 1rem;
+        background: #4e905d;
+        visibility: hidden;
+      }
+
+      .compareBtn {
+        justify-self: center;
+        grid-area: button;
+        padding: 1rem;
+        border: none;
+        border-radius: 8px;
+        background: #4e905d;
+        visibility: visible;
+        filter: brightness(0.8);
+      }
+
+      .compareBtn:hover {
+        cursor: pointer;
+        filter: brightness(1);
+      }
+    }
+
+    .setConfig {
+      display: flex;
+      flex-flow: column wrap;
+      justify-content: flex-end;
+      gap: 1rem;
+      order: 1;
+      min-width: 200px;
+
+      label {
+        display: flex;
+        gap: 8px;
+      }
+    }
+
+    .clear {
+      display: flex;
+      justify-content: flex-end;
+      align-items: flex-end;
+      order: 3;
+      min-width: 200px;
+
+      .clearBtn {
+        background: gray;
+        padding: 8px;
+        border-radius: 8px;
+        border: none;
+        filter: brightness(0.8);
+      }
+
+      .clearBtn:hover {
+        filter: brightness(1);
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+/* media query */
+@media (width <= 800px) {
+  .container {
+    overflow: auto !important;
+    grid-template-columns: auto;
+  }
+
+  .elements {
+    flex-flow: column wrap !important;
+    align-items: center !important;
+
+    .showResult {
+      order: 1 !important;
+      min-width: fit-content !important;
+    }
+
+    .setConfig {
+      order: 2 !important;
+      align-items: center !important;
+    }
+
+    .clear {
+      order: 3 !important;
+      justify-content: center !important;
+    }
+  }
+}
